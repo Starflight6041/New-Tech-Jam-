@@ -15,9 +15,17 @@ public class AbilityBase : ScriptableObject
     }
     public virtual void Execute()
     {
-        if (Time.time - timeOfUse >= cooldown && !isHold)
+        if (Time.time - timeOfUse >= cooldown)
         {
-            timeOfUse = Time.time;
+            
+            if (isHold)
+            {
+                inHoldUse = true;
+            }
+            else
+            {
+                timeOfUse = Time.time;
+            }
             TriggerEffect();
 
         }
@@ -41,13 +49,14 @@ public class AbilityBase : ScriptableObject
         {
             inHoldUse = false;
             timeOfUse = Time.time;
+            
 
         }
         
     }
     public virtual void CancelOnGrounded()
     {
-
+        AbilityHoldCanceled();
     }
 
 }

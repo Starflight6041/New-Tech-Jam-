@@ -442,10 +442,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   abilitiesPool:
+  - {fileID: 11400000, guid: 7b64d2c7212665644936d45219e140f6, type: 2}
+  - {fileID: 11400000, guid: 19970f62e2ee0c449a32eb9fd9b16bdd, type: 2}
   - {fileID: 11400000, guid: 00a3098e69f3d5d4c8ef877b900952db, type: 2}
-  - {fileID: 11400000, guid: 00a3098e69f3d5d4c8ef877b900952db, type: 2}
-  - {fileID: 11400000, guid: 00a3098e69f3d5d4c8ef877b900952db, type: 2}
-  - {fileID: 11400000, guid: 00a3098e69f3d5d4c8ef877b900952db, type: 2}
+  - {fileID: 11400000, guid: 81fd3cd14f9b26d40890433346ce60ea, type: 2}
   abilitiesPossessed: []
   abilityBars:
   - {fileID: 506062828}

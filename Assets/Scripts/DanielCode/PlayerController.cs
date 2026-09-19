@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Transform baseTransform;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundMask;
-    private static float timeOfJump = 0f;
+    private float timeOfJump = 0f;
     private float movementDirectionX = 0f;
     public static float movementSpeed = 5f;
     public static float baseSpeed = 5f;
@@ -35,13 +35,28 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         movementLocked = false;
+        timeOfJump = 0f;
 
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.3f), 0, groundMask);
+        if (isGrounded)
+        {
+            Debug.Log("grounded");
+
+        }
+        if (isDrifting)
+        {
+            Debug.Log("drifting");
+        }
+        if (movementLocked)
+        {
+            Debug.Log("movementLocked");
+        }
+        // Debug.Log(isGrounded);
         if (isGrounded)
         {
             if (isDrifting)
@@ -83,22 +98,19 @@ public class PlayerController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && isGrounded)
+        if (context.started && isGrounded && Time.time - timeOfJump > 0.05f)
         {
-            Jump();
+            Debug.Log("started");
+            //rb.AddForce(new Vector2(0, jumpHeight));
+            rb.linearVelocityY = jumpHeight;
+            timeOfJump = Time.time;
 
         }
 
     }
     public static void Jump()
     {
-        if (Time.time - timeOfJump > 0.05f)
-        {
-            Debug.Log("started");
-            //rb.AddForce(new Vector2(0, jumpHeight));
-            PlayerRb.linearVelocityY = jumpHeight;
-            timeOfJump = Time.time;
-        }
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)

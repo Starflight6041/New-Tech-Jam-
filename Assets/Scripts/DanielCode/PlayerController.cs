@@ -7,14 +7,16 @@ using UnityEngine.Rendering.Universal;
 public class PlayerController : MonoBehaviour
 {
     public static bool movementLocked = false;
+    public GameManager gameManager;
     public static PlayerController controller;
-    private bool isGrounded;
+    public static bool isGrounded;
     [SerializeField] protected Transform baseTransform;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundMask;
     private float timeOfJump = 0f;
     private float movementDirectionX = 0f;
-    private float movementSpeed = 5f;
+    public static float movementSpeed = 5f;
+    public static float baseSpeed = 5f;
     private float jumpHeight = 10f;
     public static Rigidbody2D PlayerRb;
     public InputAction move;
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+       
         PlayerRb = rb;
         controller = this;
         move = InputSystem.actions.FindAction("Move");
@@ -32,6 +34,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.2f), 0, groundMask);
+        if (isGrounded)
+        {
+            foreach (AbilityBase a in gameManager.abilitiesPossessed)
+            {
+                a.CancelOnGrounded();
+            }
+        }
         if (!movementLocked)
         {
             rb.linearVelocityX = movementDirectionX * movementSpeed;

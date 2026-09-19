@@ -56,7 +56,8 @@ public class AbilityBase : ScriptableObject
     }
     public virtual void CancelOnGrounded()
     {
-        AbilityHoldCanceled();
+        
     }
+    
 
 }

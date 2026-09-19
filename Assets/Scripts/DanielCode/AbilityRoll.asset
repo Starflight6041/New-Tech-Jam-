@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff80e8ad47f1c045a26034f0d8ab924, type: 3}
-  m_Name: AbilityGlide
-  m_EditorClassIdentifier: Assembly-CSharp::AbilityGlide
+  m_Script: {fileID: 11500000, guid: 0a420bbc16d31604a9587dc9d0cb96b8, type: 3}
+  m_Name: AbilityRoll
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityRoll
   abilitySprite: {fileID: 0}
   cooldown: 1
-  timeOfUse: 8.693194
+  timeOfUse: 0
   isHold: 1
   inHoldUse: 0
-  speedModifier: 2
+  rollForce: 2

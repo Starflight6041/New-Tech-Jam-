@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        /*
         if (context.interaction is UnityEngine.InputSystem.Interactions.TapInteraction)
         {
             abilitiesPossessed[0].Execute();
@@ -53,16 +54,17 @@ public class GameManager : MonoBehaviour
             abilitiesPossessed[0].ExecuteHold();
             Debug.Log("Holding");
         }
+        */
+        abilitiesPossessed[0].Execute();
         
         
     }
     public void CancelAbility0(InputAction.CallbackContext context)
     {
         
-        if (context.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
-        {
-            abilitiesPossessed[0].AbilityHoldCanceled();
-        }
+        
+        abilitiesPossessed[0].AbilityHoldCanceled();
+        
         
     }
     public void TriggerAbility1(InputAction.CallbackContext context)
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        /*
         if (context.interaction is UnityEngine.InputSystem.Interactions.TapInteraction)
         {
             abilitiesPossessed[1].Execute();
@@ -79,16 +82,16 @@ public class GameManager : MonoBehaviour
         {
             abilitiesPossessed[1].ExecuteHold();
             Debug.Log("Holding");
-        }
-        
+        */
+        abilitiesPossessed[1].Execute();
+
 
     }
     public void CancelAbility1(InputAction.CallbackContext context)
     {
-        if (context.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
-        {
-            abilitiesPossessed[1].AbilityHoldCanceled();
-        }
+        
+        abilitiesPossessed[1].AbilityHoldCanceled();
+        
     }
     public void TriggerAbility2(InputAction.CallbackContext context)
     {
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        /*
         if (context.interaction is UnityEngine.InputSystem.Interactions.TapInteraction)
         {
             abilitiesPossessed[2].Execute();
@@ -105,14 +109,15 @@ public class GameManager : MonoBehaviour
             abilitiesPossessed[2].ExecuteHold();
             Debug.Log("Holding");
         }
-        
+        */
+        abilitiesPossessed[2].Execute();
+
     }
     public void CancelAbility2(InputAction.CallbackContext context)
     {
-        if (context.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
-        {
-            abilitiesPossessed[2].AbilityHoldCanceled();
-        }
+        
+        abilitiesPossessed[2].AbilityHoldCanceled();
+        
     }
     public void RandomizeAbilities()
     {

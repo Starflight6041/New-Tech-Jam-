@@ -7,7 +7,10 @@ public class AbilityGlide : AbilityBase
     public override void TriggerEffect()
     {
         Debug.Log("gliding");
-        
+        if (PlayerController.isGrounded)
+        {
+            PlayerController.PlayerRb.linearVelocityY = PlayerController.jumpHeight;
+        }
         PlayerController.PlayerRb.linearVelocityY = 0;
         PlayerController.PlayerRb.gravityScale = 0.2f;
         PlayerController.movementLocked = true;
@@ -28,6 +31,8 @@ public class AbilityGlide : AbilityBase
         base.AbilityHoldCanceled();
         
     }
+    
+    
     /*
     public override void CancelOnGrounded()
     {

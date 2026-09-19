@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Debug.Log(isGrounded);
-        isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.3f), 0, groundMask);
+        isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, groundMask);
         if (isGrounded)
         {
             Debug.Log("grounded");
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForceX(movementDirectionX * 2);
         */
-        if (rb.linearVelocityX >= movementSpeed * 1.1f)
+        if (rb.linearVelocityX >= movementSpeed * 1.1f && !isGrounded)
         {
             movementLocked = true;
             isDrifting = true;

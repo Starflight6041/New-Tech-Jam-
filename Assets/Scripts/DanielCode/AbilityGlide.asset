@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff80e8ad47f1c045a26034f0d8ab924, type: 3}
+  m_Name: AbilityGlide
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityGlide
+  abilitySprite: {fileID: 0}
+  cooldown: 1
+  timeOfUse: 18.213058
+  isHold: 1
+  inHoldUse: 0
+  modifiedSpeed: 7

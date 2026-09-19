@@ -11,6 +11,7 @@ public class AbilityDash : AbilityBase
         Debug.Log("Dashing");
         PlayerController.controller.Dash(dashDuration, dashLength);
     }
+    
 
    
 }

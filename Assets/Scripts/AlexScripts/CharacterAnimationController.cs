@@ -4,11 +4,11 @@ using System.Collections;
 public class SimplePlayer : MonoBehaviour {
 
     Animator animator;
-    CharacterController2D characterController;
+    PlayerController characterController;
     
     void Start () {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController2D>();
+        characterController = GetComponent<PlayerController>();
     }
 
     void Update () {
@@ -17,8 +17,8 @@ public class SimplePlayer : MonoBehaviour {
         bool r = characterController.rb.linearVelocity.x>0;
         bool fall = characterController.rb.linearVelocity.y<-1;
         bool jump = characterController.rb.linearVelocity.y>1;
-        bool stand = characterController.isGrounded && still;
-        bool walk = characterController.isGrounded && !still;
+        bool stand = characterController.IsGrounded && still;
+        bool walk = characterController.IsGrounded && !still;
         bool walkLeft = walk && l;
         bool walkRight = walk && r;
         bool fallLeft = fall && l;

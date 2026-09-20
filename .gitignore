@@ -9,7 +9,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
-# /[Uu]ser[Ss]ettings/
+/[Uu]ser[Ss]ettings/
 *.log
 
 # MemoryCaptures can get excessive in size.
@@ -35,12 +35,12 @@
 ExportedObj/
 .consulo/
 *.csproj
-*.unityproj
+#*.unityproj
 *.sln
 *.suo
 *.tmp
 *.user
-*.userprefs
+#*.userprefs
 *.pidb
 *.booproj
 *.svd

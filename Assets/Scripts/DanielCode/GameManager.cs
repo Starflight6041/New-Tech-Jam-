@@ -175,6 +175,7 @@ public class GameManager : MonoBehaviour
             abilitiesPossessed.Add(abilitiesPool[abilityIndex]);
             abilitiesPool.RemoveAt(abilityIndex);
             abilitiesPossessed[i].timeOfUse = 0f;
+            abilityImages[i].sprite = abilitiesPossessed[i].abilitySprite;
         }
 
     }

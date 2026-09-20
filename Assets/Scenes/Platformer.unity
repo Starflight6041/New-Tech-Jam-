@@ -451,7 +451,10 @@ MonoBehaviour:
   - {fileID: 506062828}
   - {fileID: 683636124}
   - {fileID: 1217964352}
-  abilityImages: []
+  abilityImages:
+  - {fileID: 924137826}
+  - {fileID: 2026906603}
+  - {fileID: 624901550}
   playerMap: {fileID: -944628639613478452, guid: 9c176385b83ff404d8192d38ccde12a9, type: 3}
 --- !u!1 &216162382
 GameObject:

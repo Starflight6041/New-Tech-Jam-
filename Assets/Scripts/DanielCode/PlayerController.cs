@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
         Vector2 targetPos = (Vector2) (gameObject.transform.position) + move.ReadValue<Vector2>() * length;
         yield return StartCoroutine(Dashing(duration, length, currentPos, targetPos, Time.time));
         //movementLocked = false;
-        rb.linearVelocityY = 0;
+        
     }
     public IEnumerator Dashing(float duration, float length, Vector2 currentPos, Vector2 targetPos, float startingTime)
     {
@@ -146,7 +146,10 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.position = Vector2.Lerp(currentPos, targetPos, (Time.time - startingTime) / duration);
             yield return null;
         }
-        
+        yield return null;
+        rb.linearVelocity = (targetPos - currentPos) / (targetPos - currentPos).magnitude * rb.linearVelocity.magnitude;
+
+
     }
     public void Roll(float rollForce)
     {

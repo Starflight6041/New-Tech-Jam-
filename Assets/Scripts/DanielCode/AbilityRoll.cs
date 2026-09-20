@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AbilityRoll", menuName = "Scriptable Objects/AbilityRoll")]
 public class AbilityRoll : AbilityBase
 {
-    public float rollForce = 1f;
+    public float rollForce = .7f;
     public override void TriggerEffect()
     {
         //PlayerController.movementLocked = true;

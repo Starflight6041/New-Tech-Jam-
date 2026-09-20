@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AbilityDash", menuName = "Scriptable Objects/AbilityDash")]
@@ -11,6 +12,8 @@ public class AbilityDash : AbilityBase
         Debug.Log("Dashing");
         PlayerController.isDrifting = true;
         PlayerController.controller.Dash(dashDuration, dashLength);
+        float magnitudeVelocity = PlayerController.PlayerRb.linearVelocity.magnitude;
+
     }
     
 

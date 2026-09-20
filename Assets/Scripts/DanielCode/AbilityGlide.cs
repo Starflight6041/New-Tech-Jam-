@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AbilityGlide", menuName = "Scriptable Objects/AbilityGlide")]
 public class AbilityGlide : AbilityBase
 {
-    public float speedModifier = 1.1f;
+    public float speedModifier = 1.05f;
     public override void TriggerEffect()
     {
         Debug.Log("gliding");

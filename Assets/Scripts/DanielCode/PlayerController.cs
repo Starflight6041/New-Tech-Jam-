@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Transform baseTransform;
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask deathMask;
+    [SerializeField] private LayerMask winMask;
+    [SerializeField] private LayerMask loseMask;
     private float timeOfJump = 0f;
     private float movementDirectionX = 0f;
     public static float movementSpeed = 5f;
@@ -52,18 +55,32 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(isGrounded);
         isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, groundMask) && Time.time - groundedLenience > 0.4f;
+        if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, deathMask))
+        {
+            resetPosVelocity();
+        }
+        if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, winMask))
+        {
+            resetPosVelocity();
+            win();
+        }
+        if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, loseMask))
+        {
+            resetPosVelocity();
+            lose();
+        }
         if (isGrounded)
         {
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
 
         }
         if (isDrifting)
         {
-            Debug.Log("drifting");
+            //Debug.Log("drifting");
         }
         if (movementLocked)
         {
-            Debug.Log("movementLocked");
+            //Debug.Log("movementLocked");
         }
         // Debug.Log(isGrounded);
         if (isGrounded && Time.time - groundedLenience > 0.1f)
@@ -120,6 +137,24 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    void resetPosVelocity()
+    {
+        transform.position = new Vector3(0f, 0f, 0f);
+        rb.linearVelocityX = 0f;
+        rb.linearVelocityY = 0f;
+    }
+
+    public void win()
+    {
+
+    }
+
+    public void lose()
+    {
+
+    }
+
     public static void Jump()
     {
         

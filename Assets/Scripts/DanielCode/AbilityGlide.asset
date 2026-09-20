@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityGlide
   abilitySprite: {fileID: -7567423073987972374, guid: b4deee2c635d7eb48baa0af5a340b27c, type: 3}
   cooldown: 1
-  timeOfUse: 15.849881
+  timeOfUse: 57.864494
   isHold: 1
   inHoldUse: 0
-  speedModifier: 2
+  speedModifier: 1.1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityRoll
   abilitySprite: {fileID: 0}
   cooldown: 1
-  timeOfUse: 0
+  timeOfUse: 6.2697954
   isHold: 1
   inHoldUse: 0
-  rollForce: 2
+  rollForce: 1

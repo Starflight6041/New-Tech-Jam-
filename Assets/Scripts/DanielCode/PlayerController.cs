@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public static Rigidbody2D PlayerRb;
     public InputAction move;
     public static bool isDrifting = false;
+    public static float groundedLenience = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,14 +36,16 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         movementLocked = false;
+        isDrifting = false;
         timeOfJump = 0f;
+        groundedLenience = 0f;
 
     }
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(isGrounded);
-        isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, groundMask);
+        isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, groundMask) && Time.time - groundedLenience > 0.4f;
         if (isGrounded)
         {
             Debug.Log("grounded");
@@ -57,12 +60,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("movementLocked");
         }
         // Debug.Log(isGrounded);
-        if (isGrounded)
+        if (isGrounded && Time.time - groundedLenience > 0.1f)
         {
             if (isDrifting)
             {
                 isDrifting = false;
-                movementLocked = false;
+                
             }
             foreach (AbilityBase a in gameManager.abilitiesPossessed)
             {
@@ -78,27 +81,30 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForceX(movementDirectionX * 2);
         */
-        if (rb.linearVelocityX >= movementSpeed * 1.1f && !isGrounded)
+        
+        if (Mathf.Abs(rb.linearVelocityX) >= movementSpeed * 1.1f && (!isGrounded || isRolling))
         {
-            movementLocked = true;
+            
             isDrifting = true;
         }
-        if (!movementLocked)
+        if (!isDrifting && !isRolling)
         {
-            rb.linearVelocityX = movementDirectionX * movementSpeed;
+            
+             rb.linearVelocityX = movementDirectionX * movementSpeed;
+            
+            
         }
         else
         {
             rb.AddForceX(movementDirectionX * 1.5f);
         }
-
         // later change to an always drifting solution for high speeds
 
 
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && isGrounded && Time.time - timeOfJump > 0.05f)
+        if (context.started && isGrounded && Time.time - timeOfJump > 0.05f && !isRolling)
         {
             Debug.Log("started");
             //rb.AddForce(new Vector2(0, jumpHeight));
@@ -121,7 +127,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Dash(float duration, float length)
     {
-        movementLocked = true;
+        //movementLocked = true;
+        
         StartCoroutine(DashingStart(duration, length));
     }
     public IEnumerator DashingStart(float duration, float length)
@@ -129,7 +136,7 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPos = gameObject.transform.position;
         Vector2 targetPos = (Vector2) (gameObject.transform.position) + move.ReadValue<Vector2>() * length;
         yield return StartCoroutine(Dashing(duration, length, currentPos, targetPos, Time.time));
-        movementLocked = false;
+        //movementLocked = false;
         rb.linearVelocityY = 0;
     }
     public IEnumerator Dashing(float duration, float length, Vector2 currentPos, Vector2 targetPos, float startingTime)
@@ -167,6 +174,10 @@ public class PlayerController : MonoBehaviour
             {
                 isRolling = false;
             }
+            foreach (AbilityBase a in gameManager.abilitiesPossessed)
+            {
+                a.CancelOnGrounded();
+            }
             yield return null;
         }
         Leap();
@@ -190,6 +201,9 @@ public class PlayerController : MonoBehaviour
     {
         PlayerRb.AddForceY(400);
         isDrifting = true;
+        movementLocked = true;
+        
+        
     }
 
     // make a launch function

@@ -9,6 +9,7 @@ public class AbilityDash : AbilityBase
     public override void TriggerEffect()
     {
         Debug.Log("Dashing");
+        PlayerController.isDrifting = true;
         PlayerController.controller.Dash(dashDuration, dashLength);
     }
     

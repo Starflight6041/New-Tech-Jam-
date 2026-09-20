@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AbilityGlide", menuName = "Scriptable Objects/AbilityGlide")]
 public class AbilityGlide : AbilityBase
 {
-    public float speedModifier = 1.5f;
+    public float speedModifier = 1.1f;
     public override void TriggerEffect()
     {
         Debug.Log("gliding");
@@ -22,14 +22,13 @@ public class AbilityGlide : AbilityBase
     public override void AbilityHoldCanceled()
     {
 
-        if (inHoldUse)
-        {
-            PlayerController.PlayerRb.gravityScale = 1f;
-            PlayerController.movementSpeed = PlayerController.baseSpeed;
-            PlayerController.movementLocked = false;
-            PlayerController.isDrifting = false;
+        
+        PlayerController.PlayerRb.gravityScale = 1f;
+        // PlayerController.movementSpeed = PlayerController.baseSpeed;
+            //PlayerController.movementLocked = false;
+            //PlayerController.isDrifting = false;
 
-        }
+        
         base.AbilityHoldCanceled();
         
     }

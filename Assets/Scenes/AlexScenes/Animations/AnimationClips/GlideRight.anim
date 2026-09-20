@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Standing
+  m_Name: GlideRight
   serializedVersion: 8
   m_Legacy: 0
   m_Compressed: 0
@@ -42,7 +42,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -3842353275482561300, guid: a9993d0e69a816e489c6a568a48a9f55, type: 3}
+      value: {fileID: 8313037140156501713, guid: a768a9dca610da640ba066a0f76418d6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -76,7 +76,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
       metaData: 0
     pptrCurveMapping:
-    - {fileID: -3842353275482561300, guid: a9993d0e69a816e489c6a568a48a9f55, type: 3}
+    - {fileID: 8313037140156501713, guid: a768a9dca610da640ba066a0f76418d6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

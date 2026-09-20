@@ -37,6 +37,8 @@ public class AbilityGlide : AbilityBase
     
     public override void CancelOnGrounded()
     {
+        SimplePlayer.animator.SetBool("GlideLeft", false);
+        SimplePlayer.animator.SetBool("GlideRight", false);
         AbilityHoldCanceled();
     }
     

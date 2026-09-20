@@ -59,6 +59,14 @@ public class PlayerController : MonoBehaviour
         if (isDrifting)
         {
             Debug.Log("drifting");
+            if (movementDirectionX > 0)
+            {
+                SimplePlayer.animator.SetBool("DriftRight", true);
+            }
+            else
+            {
+                SimplePlayer.animator.SetBool("DriftLeft", true);
+            }
         }
         if (movementLocked)
         {
@@ -133,16 +141,20 @@ public class PlayerController : MonoBehaviour
     public void Dash(float duration, float length)
     {
         //movementLocked = true;
-        
+
         StartCoroutine(DashingStart(duration, length));
     }
     public IEnumerator DashingStart(float duration, float length)
     {
+        if(movementDirectionX > 0){
+            SimplePlayer.animator.SetBool("DashRight", true);
+        } else {
+            SimplePlayer.animator.SetBool("DashLeft", true);
+        }
         Vector2 currentPos = gameObject.transform.position;
         Vector2 targetPos = (Vector2) (gameObject.transform.position) + move.ReadValue<Vector2>() * length;
         yield return StartCoroutine(Dashing(duration, length, currentPos, targetPos, Time.time));
         //movementLocked = false;
-        
     }
     public IEnumerator Dashing(float duration, float length, Vector2 currentPos, Vector2 targetPos, float startingTime)
     {
@@ -154,7 +166,8 @@ public class PlayerController : MonoBehaviour
         yield return null;
         rb.linearVelocity = (targetPos - currentPos) / (targetPos - currentPos).magnitude * rb.linearVelocity.magnitude;
 
-
+        SimplePlayer.animator.SetBool("DashLeft", false);
+        SimplePlayer.animator.SetBool("DashRight", false);
     }
     public void Roll(float rollForce)
     {
@@ -172,10 +185,12 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.linearVelocityX > 0)
             {
+                SimplePlayer.animator.SetBool("RollRight", true);
                 rb.AddForceX(rollForce);
             }
             else if (rb.linearVelocityX < 0)
             {
+                SimplePlayer.animator.SetBool("RollLeft", true);
                 rb.AddForceX(-rollForce);
             }
             else

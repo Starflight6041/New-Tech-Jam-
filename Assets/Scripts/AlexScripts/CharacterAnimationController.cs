@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SimplePlayer : MonoBehaviour {
 
-    Animator animator;
+    static public Animator animator;
     PlayerController characterController;
     
     void Start () {
@@ -15,8 +15,8 @@ public class SimplePlayer : MonoBehaviour {
         bool still = characterController.rb.linearVelocity.x==0;
         bool l = characterController.rb.linearVelocity.x<0;
         bool r = characterController.rb.linearVelocity.x>0;
-        bool fall = characterController.rb.linearVelocity.y<-1;
-        bool jump = characterController.rb.linearVelocity.y>1;
+        bool fall = !characterController.IsGrounded && characterController.rb.linearVelocity.y<0;
+        bool jump = !characterController.IsGrounded && characterController.rb.linearVelocity.y>0;
         bool stand = characterController.IsGrounded && still;
         bool walk = characterController.IsGrounded && !still;
         bool walkLeft = walk && l;

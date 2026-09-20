@@ -7,6 +7,7 @@ public class AbilityRoll : AbilityBase
     public override void TriggerEffect()
     {
         //PlayerController.movementLocked = true;
+        GameManager.isAbility = true;
         PlayerController.isDrifting = true;
         PlayerController.isRolling = true;
         if (PlayerController.isGrounded)

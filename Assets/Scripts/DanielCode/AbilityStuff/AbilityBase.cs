@@ -15,7 +15,7 @@ public class AbilityBase : ScriptableObject
     }
     public virtual void Execute()
     {
-        if (Time.time - timeOfUse >= cooldown)
+        if (Time.time - timeOfUse >= cooldown && !GameManager.isAbility)
         {
             
             if (isHold)
@@ -49,7 +49,7 @@ public class AbilityBase : ScriptableObject
         {
             inHoldUse = false;
             timeOfUse = Time.time;
-            
+            GameManager.isAbility = false;
 
         }
         

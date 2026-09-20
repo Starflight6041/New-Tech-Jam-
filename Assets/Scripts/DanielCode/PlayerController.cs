@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
         }
         yield return null;
         rb.linearVelocity = (targetPos - currentPos) / (targetPos - currentPos).magnitude * rb.linearVelocity.magnitude;
+        GameManager.isAbility = false;
 
 
     }
@@ -209,6 +210,7 @@ public class PlayerController : MonoBehaviour
     public static void Leap()
     {
         PlayerRb.AddForceY(400);
+        GameManager.isAbility = false;
         isDrifting = true;
         movementLocked = true;
         

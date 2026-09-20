@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private InputAction ability0;
     private InputAction ability1;
     private InputAction ability2;
+    public static bool isAbility = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        isAbility = false;
         ability0.canceled += CancelAbility0;
         ability1.canceled += CancelAbility1;
         ability2.canceled += CancelAbility2;
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         for (int i = 0; i < abilitiesPossessed.Count; i++)
         {
             abilityBars[i].value = (Time.time - abilitiesPossessed[i].timeOfUse) / abilitiesPossessed[i].cooldown;
@@ -100,7 +103,8 @@ public class GameManager : MonoBehaviour
         
         abilitiesPossessed[0].AbilityHoldCanceled();
         
-        
+
+
     }
     public void TriggerAbility1(InputAction.CallbackContext context)
     {
@@ -127,6 +131,7 @@ public class GameManager : MonoBehaviour
         
         abilitiesPossessed[1].AbilityHoldCanceled();
         
+
     }
     public void TriggerAbility2(InputAction.CallbackContext context)
     {
@@ -152,6 +157,7 @@ public class GameManager : MonoBehaviour
     {
         
         abilitiesPossessed[2].AbilityHoldCanceled();
+        
         
     }
     public void RandomizeAbilities()

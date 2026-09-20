@@ -6,6 +6,7 @@ public class AbilityGlide : AbilityBase
     public float speedModifier = 1.05f;
     public override void TriggerEffect()
     {
+        GameManager.isAbility = true;
         Debug.Log("gliding");
         Debug.Log(PlayerController.isGrounded);
         PlayerController.isDrifting = true;

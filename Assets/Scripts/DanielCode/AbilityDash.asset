@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82085eee08ce3284ca0b431cd54e8ee9, type: 3}
   m_Name: AbilityDash
   m_EditorClassIdentifier: Assembly-CSharp::AbilityDash
+  abilitySprite: {fileID: 8448738645326095528, guid: 46ecb98798c35a543b3df952f15498f4, type: 3}
   cooldown: 1
-  timeOfUse: 121.256966
+  timeOfUse: 14.046021
+  isHold: 0
+  inHoldUse: 0
   dashDuration: 0.1
   dashLength: 3

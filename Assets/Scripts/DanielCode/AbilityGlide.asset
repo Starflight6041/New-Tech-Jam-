@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff80e8ad47f1c045a26034f0d8ab924, type: 3}
   m_Name: AbilityGlide
   m_EditorClassIdentifier: Assembly-CSharp::AbilityGlide
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: -7567423073987972374, guid: b4deee2c635d7eb48baa0af5a340b27c, type: 3}
   cooldown: 1
-  timeOfUse: 5.998268
+  timeOfUse: 10.59768
   isHold: 1
   inHoldUse: 0
-  speedModifier: 1.1
+  speedModifier: 1.2

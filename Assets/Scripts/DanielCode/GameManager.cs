@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     public List<AbilityBase> abilitiesPool = new List<AbilityBase>();
     public List<AbilityBase> abilitiesPossessed = new List<AbilityBase>();
     public List<Slider> abilityBars = new List<Slider>();
+    public List<Image> abilityImages = new List<Image>();
+    [SerializeField] private InputActionAsset playerMap;
+
+    private InputAction ability0;
+    private InputAction ability1;
+    private InputAction ability2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +23,7 @@ public class GameManager : MonoBehaviour
         RandomizeAbilities();
         
     }
+    /*
     void OnEnable()
     {
         InputSystem.actions.FindAction("Ability0").canceled += CancelAbility0;
@@ -28,6 +35,34 @@ public class GameManager : MonoBehaviour
         InputSystem.actions.FindAction("Ability0").canceled -= CancelAbility0;
         InputSystem.actions.FindAction("Ability1").canceled -= CancelAbility1;
         InputSystem.actions.FindAction("Ability2").canceled -= CancelAbility2;
+    }
+    */
+    
+
+    private void Awake()
+    {
+        // Find the specific actions inside the assigned asset
+        ability0 = playerMap.FindAction("Ability0");
+        ability1 = playerMap.FindAction("Ability1");
+        ability2 = playerMap.FindAction("Ability2");
+    }
+
+    private void OnEnable()
+    {
+        ability0.canceled += CancelAbility0;
+        ability1.canceled += CancelAbility1;
+        ability2.canceled += CancelAbility2;
+
+        playerMap.Enable(); // Enables action maps within this asset
+    }
+
+    private void OnDisable()
+    {
+        ability0.canceled -= CancelAbility0;
+        ability1.canceled -= CancelAbility1;
+        ability2.canceled -= CancelAbility2;
+
+        playerMap.Disable();
     }
 
     // Update is called once per frame

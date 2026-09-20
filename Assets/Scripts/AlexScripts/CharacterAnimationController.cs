@@ -25,7 +25,7 @@ public class SimplePlayer : MonoBehaviour {
         bool fallRight = fall && r;
         bool jumpLeft = jump && l;
         bool jumpRight = jump && r;
-
+        
         animator.SetBool("JumpLeft", jumpLeft);
         animator.SetBool("JumpRight", jumpRight);
         animator.SetBool("FallLeft", fallLeft);
@@ -35,7 +35,7 @@ public class SimplePlayer : MonoBehaviour {
         animator.SetBool("Jumping", jump && !jumpLeft && !jumpRight);
         animator.SetBool("Falling", fall && !fallLeft && !fallRight);
         animator.SetBool("Standing", stand);
-
+        
     }
 
 }

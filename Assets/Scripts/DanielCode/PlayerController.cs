@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         movementLocked = false;
+        isRolling = false;
         isDrifting = false;
         timeOfJump = 0f;
         groundedLenience = 0f;

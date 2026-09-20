@@ -11,8 +11,13 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public static PlayerController controller;
     public static bool isGrounded;
+    public bool IsGrounded
+    {
+        get => isGrounded;
+        set => isGrounded = value;
+    }
     [SerializeField] protected Transform baseTransform;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private LayerMask groundMask;
     private float timeOfJump = 0f;
     private float movementDirectionX = 0f;

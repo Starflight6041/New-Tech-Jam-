@@ -22,6 +22,8 @@ public class AbilityRoll : AbilityBase
     }
     public override void AbilityHoldCanceled()
     {
+        SimplePlayer.animator.SetBool("RollLeft", false);
+        SimplePlayer.animator.SetBool("RollRight", false);
         PlayerController.groundedLenience = Time.time;
         PlayerController.isDrifting = true;
         PlayerController.isRolling = false;

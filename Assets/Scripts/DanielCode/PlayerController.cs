@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForceX(movementDirectionX * 2);
         */
         
-        if (Mathf.Abs(rb.linearVelocityX) >= movementSpeed * 1.1f && (!isGrounded || isRolling))
+        if (Mathf.Abs(rb.linearVelocityX) >= movementSpeed * 2f && (!isGrounded || isRolling))
         {
             
             isDrifting = true;

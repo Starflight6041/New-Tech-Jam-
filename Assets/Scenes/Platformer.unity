@@ -2979,19 +2979,7 @@ MonoBehaviour:
     m_ActionId: c57b5b45-e9e1-49fe-a7e1-5ec783a04a1e
     m_ActionName: 'Player/Ability2[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 206425239}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: TriggerAbility2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: affaf016-72be-4533-8512-7dc6b7017289
     m_ActionName: 'Player/Ability3[/Keyboard/3]'
   m_NeverAutoSwitchControlSchemes: 0

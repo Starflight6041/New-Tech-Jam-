@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public static bool isDrifting = false;
     public static float groundedLenience = 0f;
 
+    public GameObject grid_master;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

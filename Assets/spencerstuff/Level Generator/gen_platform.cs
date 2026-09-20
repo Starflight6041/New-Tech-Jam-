@@ -7,8 +7,8 @@ public class gen_platform : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //genPlatform(-1);
-        //genPlatform(1);
+        genRandPlatform(-1);
+        genRandPlatform(1);
         //UnityEditor.EditorApplication.isPlaying = false;
 
     }

@@ -28,7 +28,8 @@ public class AbilityRoll : AbilityBase
         PlayerController.isRolling = false;
         
             // PlayerController.movementLocked = false;
-            
+            SimplePlayer.animator.SetBool("RollLeft", false);
+            SimplePlayer.animator.SetBool("RollRight", false);
         
         base.AbilityHoldCanceled();
     }

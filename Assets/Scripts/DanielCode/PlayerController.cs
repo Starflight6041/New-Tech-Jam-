@@ -169,7 +169,14 @@ public class PlayerController : MonoBehaviour
     public void Dash(float duration, float length)
     {
         //movementLocked = true;
-        
+        if(movementDirectionX > 0)
+        {
+            SimplePlayer.animator.SetBool("DashRight", true);
+        }
+        else
+        {
+            SimplePlayer.animator.SetBool("DashLeft", true);
+        }
         StartCoroutine(DashingStart(duration, length));
     }
     public IEnumerator DashingStart(float duration, float length)
@@ -195,12 +202,27 @@ public class PlayerController : MonoBehaviour
     }
     public void Roll(float rollForce)
     {
+        if(movementDirectionX > 0)
+        {
+            SimplePlayer.animator.SetBool("RollRight", true);
+        }
+        else if (movementDirectionX < 0)
+        {
+            SimplePlayer.animator.SetBool("RollLeft", true);
+        }
         StartCoroutine(Rolling(rollForce));
         
     }
     public void SlamThenRoll(float rollForce)
     {
-        
+        if(movementDirectionX > 0)
+        {
+            SimplePlayer.animator.SetBool("RollRight", true);
+        }
+        else if (movementDirectionX < 0)
+        {
+            SimplePlayer.animator.SetBool("RollLeft", true);
+        }
         StartCoroutine(SlamRoll(rollForce));
     }
     public IEnumerator Rolling(float rollForce)

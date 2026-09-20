@@ -6,11 +6,18 @@ public class AbilityGlide : AbilityBase
     public float speedModifier = 1.05f;
     public override void TriggerEffect()
     {
+        if(PlayerController.PlayerRb.linearVelocityX < 0)
+        {
+            SimplePlayer.animator.SetBool("GlideLeft", true);
+        }
+        else if (PlayerController.PlayerRb.linearVelocityX > 0)
+        {
+            SimplePlayer.animator.SetBool("GlideRight", true);
+        }
         GameManager.isAbility = true;
         Debug.Log("gliding");
         Debug.Log(PlayerController.isGrounded);
         PlayerController.isDrifting = true;
-        
         PlayerController.PlayerRb.linearVelocityY = 0;
         
         
@@ -28,7 +35,8 @@ public class AbilityGlide : AbilityBase
         // PlayerController.movementSpeed = PlayerController.baseSpeed;
             //PlayerController.movementLocked = false;
             //PlayerController.isDrifting = false;
-
+            SimplePlayer.animator.SetBool("GlideLeft", false);
+            SimplePlayer.animator.SetBool("GlideRight", false);
         
         base.AbilityHoldCanceled();
         
@@ -38,6 +46,8 @@ public class AbilityGlide : AbilityBase
     
     public override void CancelOnGrounded()
     {
+        SimplePlayer.animator.SetBool("GlideLeft", false);
+        SimplePlayer.animator.SetBool("GlideRight", false);
         AbilityHoldCanceled();
     }
     

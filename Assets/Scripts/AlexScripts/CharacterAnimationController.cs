@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SimplePlayer : MonoBehaviour {
 
-    Animator animator;
+    static public Animator animator;
     PlayerController characterController;
     
     void Start () {

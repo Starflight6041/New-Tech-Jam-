@@ -13,6 +13,12 @@ public class gen_platform : MonoBehaviour
 
     }
 
+
+    public void genBothSides()
+    {
+        genRandPlatform(-1);
+        genRandPlatform(1);
+    }
     // Update is called once per frame
     void Update()
     {

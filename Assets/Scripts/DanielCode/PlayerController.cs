@@ -59,15 +59,19 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, groundMask) && Time.time - groundedLenience > 0.4f;
         if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, deathMask))
         {
+            //death
             resetPosVelocity();
+            grid_master.GetComponent<gen_platform>().genBothSides();
         }
         if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, winMask))
         {
+            //win
             resetPosVelocity();
             win();
         }
         if (Physics2D.OverlapBox(baseTransform.position, new Vector2(1, 0.4f), 0, loseMask))
         {
+            //lose
             resetPosVelocity();
             lose();
         }

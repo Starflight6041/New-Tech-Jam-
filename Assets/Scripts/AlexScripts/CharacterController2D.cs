@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public class CharacterController2D : MonoBehaviour{
     public Rigidbody2D rb;
-    public float speed = 0.5f;
+    public float speed = 4f;
     public InputAction playerControls;
     public int jumps = 1;
-    public float jumpSpeed = 0.05f;
-
+    public float jumpSpeed = 15f;
+    public bool isGrounded = false;
     Vector2 moveDirection = Vector2.zero;
 
     private void OnEnable(){
@@ -22,6 +22,9 @@ public class CharacterController2D : MonoBehaviour{
         moveDirection = playerControls.ReadValue<Vector2>();
         if(IsGrounded()){
             jumps = 1;
+            isGrounded = true;
+        }  else{
+            isGrounded = false;
         }
     }
 
@@ -43,7 +46,7 @@ public class CharacterController2D : MonoBehaviour{
         }
     }
 
-    bool IsGrounded(){
+    public bool IsGrounded(){
         float GroundedDistance = 0.1f;
         if (rb.linearVelocity.y == 0){
             RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, GroundedDistance);

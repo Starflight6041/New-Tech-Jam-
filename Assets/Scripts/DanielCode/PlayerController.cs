@@ -180,7 +180,14 @@ public class PlayerController : MonoBehaviour
     }
     public void SlamThenRoll(float rollForce)
     {
-        
+        if(movementDirectionX > 0)
+        {
+            SimplePlayer.animator.SetBool("RollRight", true);
+        }
+        else if (movementDirectionX < 0)
+        {
+            SimplePlayer.animator.SetBool("RollLeft", true);
+        }
         StartCoroutine(SlamRoll(rollForce));
     }
     public IEnumerator Rolling(float rollForce)

@@ -16,10 +16,18 @@ public class GambleManagement : MonoBehaviour
     public static int weekProgress = 0;
     public static int weekDeadline = 7;
     public static float finalGoal = 1000;
-
+    void OnEnable()
+    {
+        
+        
+        weekDeadline = 7;
+        finalGoal = 1000;
+       
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log(UniversalManager.result);
         switch (UniversalManager.result)
         {
             case (UniversalManager.GambleResult.Win):
@@ -33,11 +41,11 @@ public class GambleManagement : MonoBehaviour
                 break;
 
         }
-        betText.text = UniversalManager.currentBet.ToString();
-        commitmentText.text = UniversalManager.earningsModifier.ToString();
-        wealthText.text = UniversalManager.wealth.ToString();
-        requirementText.text = wealthRequirement.ToString();
-        
+        betText.text = "Current Bet: " + UniversalManager.currentBet.ToString();
+        commitmentText.text = "Bet Commitment: x" + UniversalManager.earningsModifier.ToString();
+        wealthText.text = "Wealth: " + UniversalManager.wealth.ToString();
+        requirementText.text = "Requirement: " + wealthRequirement.ToString();
+        patienceSlider.value = UniversalManager.gamblerPatience;
         
     }
 
@@ -51,31 +59,33 @@ public class GambleManagement : MonoBehaviour
         weekProgress += 1;
         if (weekProgress >= weekDeadline)
         {
-            
-            float rand = Random.Range(2f, 4f);
-            baseBetMidpoint *= (UniversalManager.wealth * rand) / 14;
-            wealthRequirement = UniversalManager.wealth * rand;
             if (UniversalManager.wealth < wealthRequirement)
             {
                 Lose();
             }
-            else if (UniversalManager.wealth > finalGoal)
+            else if (UniversalManager.wealth >= finalGoal)
             {
                 Win();
             }
-            else
-            {
-
-            }
-            UniversalManager.baseBet = baseBetMidpoint * Random.Range(0.7f, 1.3f);
-            UniversalManager.currentBet = UniversalManager.baseBet;
+            
+            
             
 
+        }
+        else
+        {
+            float rand = Random.Range(2f, 4f);
+            baseBetMidpoint *= (UniversalManager.wealth * rand) / 14;
+            wealthRequirement = UniversalManager.wealth * rand;
+
+            UniversalManager.baseBet = baseBetMidpoint * Random.Range(0.7f, 1.3f);
+            UniversalManager.currentBet = UniversalManager.baseBet;
+            StartCoroutine(GoToPlatformer());
         }
     }
     public void Lose()
     {
-
+        
     }
     public void Win()
     {

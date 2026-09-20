@@ -3,7 +3,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 using UnityEditor.Rendering;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,12 +20,30 @@ public class GameManager : MonoBehaviour
     private InputAction ability1;
     private InputAction ability2;
     public static bool isAbility = false;
+    public TMP_Text patienceText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         RandomizeAbilities();
-        
+        // Daniel new stuff
+        StartCoroutine(DrainOverTime());
+
+    }
+    public IEnumerator DrainOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            UniversalManager.gamblerPatience -= UniversalManager.patienceDrain;
+            patienceText.text = "Patience: " + UniversalManager.gamblerPatience;
+            if (UniversalManager.gamblerPatience <= 0)
+            {
+                UniversalManager.PatienceExpires();
+                UniversalManager.result = UniversalManager.GambleResult.NoPatience;
+                SceneManager.LoadScene(0);
+            }
+        }
     }
     /*
     void OnEnable()

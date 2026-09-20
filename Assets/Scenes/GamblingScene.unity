@@ -1141,6 +1141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ef757d86046cd44b02fbac06dfeef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  betText: {fileID: 505241491}
+  commitmentText: {fileID: 1815573760}
+  wealthText: {fileID: 1712540156}
+  requirementText: {fileID: 1637485077}
+  patienceSlider: {fileID: 1270842481}
 --- !u!1 &1666387662
 GameObject:
   m_ObjectHideFlags: 0

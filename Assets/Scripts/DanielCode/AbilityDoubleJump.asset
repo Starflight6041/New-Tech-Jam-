@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea71a46bdecd50249925206721fced11, type: 3}
   m_Name: AbilityDoubleJump
   m_EditorClassIdentifier: Assembly-CSharp::AbilityDoubleJump
+  abilitySprite: {fileID: 2484784022568888782, guid: f2ba8934d471dfb4d9816b8182f7324c, type: 3}
   cooldown: 1
-  timeOfUse: 116.69022
+  timeOfUse: 16.296877
+  isHold: 0
+  inHoldUse: 0
   jumpHeight: 10

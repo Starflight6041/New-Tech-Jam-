@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a420bbc16d31604a9587dc9d0cb96b8, type: 3}
   m_Name: AbilityRoll
   m_EditorClassIdentifier: Assembly-CSharp::AbilityRoll
-  abilitySprite: {fileID: 0}
+  abilitySprite: {fileID: 5362989209762499465, guid: 36b1b11f4b777294ba84ee3a4da579ce, type: 3}
   cooldown: 1
-  timeOfUse: 0
+  timeOfUse: 31.674253
   isHold: 1
   inHoldUse: 0
   rollForce: 2
